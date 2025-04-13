@@ -1,0 +1,164 @@
+.mychats-container {
+    width: 30%;
+    max-width: 350px;
+    background: linear-gradient(135deg, #f0f4ff, #dfe9f3);
+    padding: 1rem;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mychats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+  }
+  
+  .mychats-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .chat-remove-icon {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .chat-remove-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .new-chat-btn {
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    font-size: 13px;
+  }
+  
+  .new-chat-btn:hover {
+    background-color: #2c5282;
+  }
+  
+  .chat-list {
+    padding: 10px 5px;
+    flex: 1;
+  }
+  
+  .chat-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-radius: 12px;
+  }
+  
+  .chat-item:hover,
+  .chat-item.selected {
+    background-color: #e2ebf9;
+  }
+  
+  .chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .chat-info {
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .chat-details {
+    flex: 1;
+  }
+  
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  
+  .chat-title-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+  }
+  
+  .chat-preview {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .chat-time {
+    font-size: 0.75rem;
+    color: #888;
+  }
+  
+  .chat-sender {
+    font-weight: bold;
+  }
+  
+  .no-chats-text {
+    text-align: center;
+    color: #666;
+    margin-top: 20px;
+  }
+  
+  .hide-on-small-screen {
+    display: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .mychats-container {
+      display: none;
+    }
+  
+    .mychats-container.hide-on-small-screen {
+      display: none !important;
+    }
+  }
+
+  .mychats-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .mychats-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .mychats-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mychats-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); 
+  }
+  
+  /* Optional: for Firefox support */
+  .mychats-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+  
