@@ -8,6 +8,7 @@ const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const { chats } = require("./data");
+const path = require('path');
 
 const app = express();
 connectDB();
@@ -15,7 +16,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin:  ["http://localhost:5173", "https://your-render-domain.onrender.com"],
   credentials: true,
 }));
 
@@ -27,6 +28,19 @@ app.get('/', (req, res) => {
   res.send("API is running");
 });
 
+//-------------------------------------------DEPLOYMENT--------------------------------------
+
+const __dirname1 = path.resolve();
+if ( process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname1 , '/frontend/dist')));
+
+  app.get('/' , ( req , res ) => {
+    res.sendFile(path.resolve(__dirname1, 'frontend','dist','index.html'))
+  });
+}
+
+//-------------------------------------------DEPLOYMENT--------------------------------------
+
 app.use(notFound);
 app.use(errorHandler);
 
@@ -36,7 +50,7 @@ const server = app.listen(PORT, console.log(`Server started on port ${PORT}`));
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://your-render-domain.onrender.com"],
   },
 });
 
